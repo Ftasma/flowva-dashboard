@@ -41,25 +41,8 @@ export default function AdminSignin() {
 
       const { user } = data;
 
-      // Fetch role from user_profiles
-      const { data: profile, error: profileError } = await supabase
-        .from("user_profiles")
-        .select("role")
-        .eq("user_id", user.id)
-        .single();
+      // Role check removed as per requirement: any authenticated user can sign in.
 
-      if (profileError || !profile) {
-        setMessage("Failed to fetch user role.");
-        return;
-      }
-      // sksk
-      const roles = profile.role || [];
-
-      if (!roles.includes("admin")) {
-        setMessage(" Unauthorized: Admin access only.");
-        await supabase.auth.signOut(); // optional: logout the user immediately
-        return;
-      }
 
       if (data.session) {
         const from = "/admin";

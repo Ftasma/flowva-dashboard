@@ -11,8 +11,6 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-console.log("Supabase Client Init - URL:", supabaseUrl);
-
 
 export interface UserProfile {
   id: string;
