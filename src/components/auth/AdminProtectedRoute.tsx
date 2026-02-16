@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContextProvider";
 import FlowvaLoader from "../common/loading";
 
 const AdminProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { loading, authenticated, hasProfile, userRole, isAuthor } = useAuth();
+  const { loading, authenticated, hasProfile } = useAuth();
   const location = useLocation();
 
   if (loading) {
@@ -22,17 +22,9 @@ const AdminProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     return <Navigate to="/unauthorized" replace />;
   }
 
-  const isAdmin = userRole === "admin";
-  const isBlogPath = location.pathname.startsWith("/admin/blog");
-
-  // ✅ Allow admins to access everything
-  if (isAdmin) return <>{children}</>;
-
-  // ✅ Allow authors to access only blog-related routes
-  if (isAuthor && isBlogPath) return <>{children}</>;
-
-  // ❌ Everyone else gets blocked
-  return <Navigate to="/unauthorized" replace />;
+  // ✅ Allow all authenticated users to access everything
+  return <>{children}</>;
 };
 
 export default AdminProtectedRoute;
+
