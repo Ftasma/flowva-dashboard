@@ -57,22 +57,14 @@ const useAuthRedirect = () => {
         const isAdminRoute = originPath.startsWith("/admin");
 
         if (isAdminRoute) {
-          if (role === "admin") {
-            // ✅ Redirect base /admin to /admin/dashboard
-            if (originPath === "/admin" || originPath === "/admin/") {
-              path = "admin/dashboard";
-            } else {
-              path = originPath.replace(/^\//, ""); // keep full admin path
-            }
+
+          // Relaxed restriction: Allow all authenticated users to access admin routes
+          if (originPath === "/admin" || originPath === "/admin/") {
+            path = "admin/dashboard";
+          } else {
+            path = originPath.replace(/^\//, ""); // keep full admin path
           }
-          // ✅ Authors → only admin/blog routes
-          else if (isAuthor && originPath.startsWith("/admin/blog")) {
-            path = originPath.replace(/^\//, ""); // e.g. admin/blog/create
-          }
-          // ❌ Everyone else → unauthorized
-          else {
-            path = "unauthorized";
-          }
+
         } else {
           // ✅ Normal users → dashboard
           path = "dashboard";
@@ -140,7 +132,7 @@ const useAuthRedirect = () => {
       }
 
       const isAuthor = profile?.is_author ?? false;
-       const exists = !!(profile && profile.user_id && profile.name);
+      const exists = !!(profile && profile.user_id && profile.name);
 
       return { exists, role, isAuthor };
     } catch (err) {
