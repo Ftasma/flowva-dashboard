@@ -51,24 +51,21 @@ const useAuthRedirect = () => {
 
       let path = "dashboard";
 
-      if (!exists) {
+      const isAdminRoute = originPath.startsWith("/admin");
+
+      if (isAdminRoute) {
+        // Relaxed restriction: Allow all authenticated users to access admin routes
+        // Bypassing onboarding check for admin routes
+        if (originPath === "/admin" || originPath === "/admin/") {
+          path = "admin/dashboard";
+        } else {
+          path = originPath.replace(/^\//, ""); // keep full admin path
+        }
+      } else if (!exists) {
         path = "onboarding";
       } else {
-        const isAdminRoute = originPath.startsWith("/admin");
-
-        if (isAdminRoute) {
-
-          // Relaxed restriction: Allow all authenticated users to access admin routes
-          if (originPath === "/admin" || originPath === "/admin/") {
-            path = "admin/dashboard";
-          } else {
-            path = originPath.replace(/^\//, ""); // keep full admin path
-          }
-
-        } else {
-          // ✅ Normal users → dashboard
-          path = "dashboard";
-        }
+        // ✅ Normal users → dashboard
+        path = "dashboard";
       }
 
       setRedirectPath(path);
@@ -133,6 +130,9 @@ const useAuthRedirect = () => {
 
       const isAuthor = profile?.is_author ?? false;
       const exists = !!(profile && profile.user_id && profile.name);
+
+      console.log("CheckUserRole - Profile:", profile);
+      console.log("CheckUserRole - Exists:", exists);
 
       return { exists, role, isAuthor };
     } catch (err) {

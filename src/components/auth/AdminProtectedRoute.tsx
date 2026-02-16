@@ -18,9 +18,8 @@ const AdminProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     return <Navigate to="/admin/signin" state={{ from: location }} replace />;
   }
 
-  if (hasProfile === false) {
-    return <Navigate to="/unauthorized" replace />;
-  }
+  // Profile check removed to allow access regardless of profile status
+
 
   // ✅ Allow all authenticated users to access everything
   return <>{children}</>;
