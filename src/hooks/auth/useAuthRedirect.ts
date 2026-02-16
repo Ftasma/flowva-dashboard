@@ -47,7 +47,7 @@ const useAuthRedirect = () => {
   const proceedWithAuthFlow = async () => {
     setIsLoading(true);
     try {
-      const { exists, role, isAuthor } = await checkUserRole();
+      const { exists } = await checkUserRole();
 
       let path = "dashboard";
 
