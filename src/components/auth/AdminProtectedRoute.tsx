@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContextProvider";
 import FlowvaLoader from "../common/loading";
 
 const AdminProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { loading, authenticated, hasProfile } = useAuth();
+  const { loading, authenticated } = useAuth();
   const location = useLocation();
 
   if (loading) {
