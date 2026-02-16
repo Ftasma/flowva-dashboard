@@ -1,0 +1,155 @@
+/* FeedbackModal.css */
+
+/* CSS Variables for consistency */
+:root {
+    --primary: #9013FE;
+    --primary-dark: #7010d0;
+    --danger: #ff4d4f;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --radius: 0.75rem;
+  }
+  
+  /* Modal animation */
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Override Ant Design Modal styles */
+  .feedback-modal .ant-modal-content {
+    border-radius: var(--radius);
+    padding: 30px;
+    border: 2px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(144, 19, 254, 0.15);
+    animation: modalFadeIn 0.3s ease;
+  }
+  
+  .feedback-modal .ant-modal-close {
+    top: 20px;
+    right: 20px;
+  }
+  
+  .feedback-modal .ant-modal-close:hover {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+  }
+  
+  .feedback-modal .ant-modal-body {
+    padding: 0;
+  }
+  
+  /* Modal header styles */
+  .modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--primary);
+  }
+  
+  /* Feedback form styles */
+  .feedback-form {
+    margin-bottom: 20px;
+  }
+  
+  .feedback-description {
+    margin-bottom: 15px;
+    color: var(--gray-600);
+  }
+  
+  .feedback-textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    margin-bottom: 15px;
+    resize: none;
+  }
+  
+  .feedback-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(144, 19, 254, 0.2);
+  }
+  
+  .feedback-error {
+    color: var(--danger);
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Success message styles */
+  .success-message {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .success-icon {
+    font-size: 60px;
+    color: #10b981;
+    margin-bottom: 15px;
+  }
+  
+  .success-title {
+    margin-bottom: 10px;
+    color: var(--primary);
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .success-text {
+    color: var(--gray-600);
+  }
+  
+  .success-emoji {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  /* Footer styles */
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--primary-dark);
+  }
+  
+  .btn-secondary {
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #e5e7eb;
+  }

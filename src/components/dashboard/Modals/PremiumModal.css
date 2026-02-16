@@ -1,0 +1,52 @@
+/* PremiumModal.css */
+.premium-modal .ant-modal-content {
+    border-radius: 16px;
+    padding: 24px;
+  }
+  
+  .premium-modal .ant-modal-close {
+    top: 16px;
+    right: 16px;
+  }
+  
+  .premium-modal .ant-modal-close-x {
+    font-size: 18px;
+    color: #000;
+  }
+  
+  .premium-modal-content {
+    font-family: 'Roboto', 'Open Sans', sans-serif;
+  }
+  
+  .premium-modal-content h2 {
+    color: #000;
+    font-weight: 600;
+  }
+  
+  .premium-features {
+    margin: 24px 0;
+  }
+  
+  .premium-feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .premium-feature-icon {
+    font-size: 24px;
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .premium-feature-text {
+    font-size: 16px;
+    color: #000;
+  }
+  
+  .upgrade-btn:hover {
+    background-color: #000 !important;
+    border-color: #000 !important;
+  }

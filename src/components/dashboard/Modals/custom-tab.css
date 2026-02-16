@@ -1,0 +1,147 @@
+/* General Tab Styles */
+.ant-tabs-tab {
+  transition: background-color 0.3s ease;
+  border: none !important;
+  font-size: 16px !important;
+}
+
+/* Active Tab Styles */
+.ant-tabs-tab.ant-tabs-tab-active {
+  background-color: rgba(144, 19, 254, 0.05) !important;
+  color: #9013fe !important; /* Ensure text color is applied */
+  border-radius: 8px 8px 0 0 !important;
+  border: none !important;
+}
+
+/* Active Tab's Text Color Specifically */
+.ant-tabs-tab.ant-tabs-tab-active > .ant-tabs-tab-btn {
+  color: #9013fe !important;
+}
+
+/* Prevent Focus Outline */
+.ant-tabs-tab:focus,
+.ant-tabs-tab:focus-visible,
+.ant-tabs-tab-active:focus,
+.ant-tabs-tab *:focus,
+.ant-tabs-tab *:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Tabs Navigation Styles */
+.ant-tabs-nav::before {
+  border-bottom: none !important;
+}
+
+.ant-tabs-nav .ant-tabs-tab {
+  margin-right: -23px !important;
+  padding: 6px 12px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  height: auto !important;
+  line-height: 1.5;
+}
+
+/* Ink Bar Styles */
+.ant-tabs-ink-bar {
+  height: 2.5px !important;
+  background-color: #9013fe !important;
+}
+.ant-tabs-tab:not(.ant-tabs-tab-active):hover {
+  background-color: rgba(144, 19, 254, 0.05) !important;
+  border-radius: 8px 8px 0 0 !important;
+  transition: background-color 0.3s ease;
+}
+.ant-tabs-tab:not(.ant-tabs-tab-active) {
+  color: #6c757d !important;
+}
+.ant-tabs-tab:not(.ant-tabs-tab-active) > .ant-tabs-tab-btn {
+  color: #6c757d !important;
+}
+
+/* Active tab text color */
+.ant-tabs-tab.ant-tabs-tab-active > .ant-tabs-tab-btn {
+  color: #9013fe !important;
+}
+
+.custom-select .ant-select-selector {
+  padding: 11px 14px;
+  border: 1px solid #ede9fe !important;
+  border-radius: 8px !important;
+  transition: border 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+.custom-select.ant-select-focused .ant-select-selector {
+  border-color: #9013fe !important;
+  box-shadow: 0 0 0 3px rgba(144, 19, 254, 0.1) !important;
+}
+
+.filter-select.ant-select-focused .ant-select-selector {
+  border-color: #9013fe !important;
+  box-shadow: 0 0 0 3px rgba(144, 19, 254, 0.1) !important;
+}
+
+.filter-select .ant-select-selector:hover {
+  border-color: inherit !important; /* resets to default */
+  box-shadow: none !important;
+}
+
+.custom-select .ant-select-selector {
+  height: 46px !important;
+  padding: 0 14px !important;
+  display: flex;
+  align-items: center;
+}
+.custom-select .ant-select-selection-placeholder {
+  color: #b1b1b1; /* Change to any color */
+  font-size: 16px; /* Optional: adjust size */
+}
+.custom-select {
+  font-size: 16px !important;
+}
+
+.custom-select,
+.custom-select .ant-select-selector,
+.custom-select .ant-select-selection-search-input {
+  font-size: 16px !important;
+}
+.custom-paragraph {
+  color: #6b7280;
+  font-size: 15px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.custom-paragraph::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: #ff8687;
+}
+
+/* Override AntD Rate star color */
+.custom-rate .ant-rate-star-full .ant-rate-star-second {
+  color: #ff8687 !important; /* Checked (filled) star color */
+}
+
+.custom-rate .ant-rate-star-first,
+.custom-rate .ant-rate-star-second {
+  transition: color 0.3s;
+}
+
+.custom-rate .ant-rate-star:hover .ant-rate-star-second {
+  color: #ff8687;
+}
+.custom-rate .ant-rate-star {
+  transition: transform 0.2s, color 0.2s, text-shadow 0.2s;
+}
+
+.custom-rate .ant-rate-star:hover {
+  transform: scale(1);
+}

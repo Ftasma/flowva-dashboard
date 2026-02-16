@@ -1,0 +1,680 @@
+/* Design 2: Abstract Geometric Waves */
+/* .banner-2 {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .banner-2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L100 0 L100 100 L0 100 Z' fill='none' stroke='%239013fe' stroke-width='0.5' stroke-opacity='0.1'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .banner-2::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at center, rgba(144, 19, 254, 0.03) 0%, transparent 70%),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 15px,
+                    rgba(144, 19, 254, 0.03) 15px,
+                    rgba(144, 19, 254, 0.03) 30px
+                );
+            animation: wave-move 20s linear infinite;
+        }
+
+        @keyframes wave-move {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        } */
+
+/* Floating shapes for Design 2 */
+/* .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            background: linear-gradient(135deg, #9013fe, #b347ff);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float-up 8s ease-in-out infinite;
+            filter: blur(1px);
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 75%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            left: 85%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 40px;
+            height: 40px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 6s;
+        }
+
+        .shape:nth-child(5) {
+            width: 120px;
+            height: 120px;
+            top: 30%;
+            left: 50%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float-up {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.1; }
+            50% { transform: translateY(-30px) scale(1.1); opacity: 0.2; }
+        } */
+
+/* Common Elements */
+/* .content {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #9013fe, #b347ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: white;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(144, 19, 254, 0.4);
+            z-index: 3;
+        } */
+
+/* Brand name colors for each design */
+
+/* .banner-2 .brand-name { 
+            color: #1e293b; 
+            background: linear-gradient(135deg, #9013fe, #b347ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    
+
+        .text-content {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .headline {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.4;
+            opacity: 0.9;
+            max-width: 500px;
+        } */
+
+/* Text colors for each design */
+
+/* .banner-2 .headline { 
+            color: #1e293b; 
+        }
+        .banner-2 .description { 
+            color: #64748b; 
+        }
+
+       
+
+        .cta-section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #9013fe, #b347ff);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(144, 19, 254, 0.3);
+            z-index: 2;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(144, 19, 254, 0.4);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        } */
+
+/* Responsive styles */
+/* @media (max-width: 768px) {
+            .banner-2 {
+                height: auto;
+                min-height: 160px;
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+                gap: 20px;
+            }
+
+            .content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .text-content {
+                margin-left: 0;
+            }
+
+            .headline {
+                font-size: 22px;
+            }
+
+            .description {
+                font-size: 14px;
+            }
+
+            .brand-name {
+                font-size: 24px;
+            }
+            
+            .logo {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        } */
+
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap"); */
+/* promo banner */
+
+.banner {
+  width: 100% !important;
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 210px;
+}
+
+.left-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.icon-section {
+  flex-shrink: 0;
+}
+
+.text-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.cta-section {
+  flex-shrink: 0;
+  margin-left: 32px;
+}
+
+/* Banner 1 - Purple gradient */
+.banner-1 {
+  background: linear-gradient(135deg, #9013fe 0%, #6c2bd9 100%);
+  color: white;
+}
+
+.banner-1::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.banner-1::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Icon styling */
+.banner-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.banner-image {
+  width: 120px; 
+  height: 120px; 
+  border-radius: 24px; 
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.2); 
+  flex-shrink: 0;
+  padding: 12px; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+}
+
+/* Typography */
+.banner-title {
+  font-size: 28px; 
+  font-weight: 700;
+  margin-bottom: 5px; 
+  line-height: 1.2;
+}
+
+.banner-subtitle {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px; 
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.banner-2 .banner-title {
+  color: #1a1a1a;
+}
+
+.banner-2 .banner-subtitle {
+  color: #666;
+}
+
+.highlight {
+  color: #ffd700;
+  font-weight: 700;
+}
+
+.banner-2 .highlight {
+  color: #9013fe;
+}
+
+.banner-3 .highlight {
+  color: #9013fe;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+/* Button */
+.cta-button {
+  background: white;
+  color: #9013fe;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  white-space: nowrap;
+  z-index: 10;
+  position: relative;
+  font-family: "Nunito", sans-serif;
+}
+
+.cta-button:hover {
+  background: #c084fc;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(192, 132, 252, 0.35);
+}
+
+.banner-2 .cta-button {
+  background: #9013fe;
+  color: white;
+  box-shadow: 0 4px 16px rgba(144, 19, 254, 0.25);
+}
+
+.banner-2 .cta-button:hover {
+  background: #c084fc;
+  box-shadow: 0 6px 24px rgba(192, 132, 252, 0.35);
+}
+
+.banner-3 .cta-button {
+  background: rgba(255, 255, 255, 0.95);
+  color: #9013fe;
+}
+
+.banner-3 .cta-button:hover {
+  background: #c084fc;
+  color: white;
+}
+
+/* Enhanced Mobile Responsive Styles */
+@media (max-width: 1024px) {
+  .banner {
+    padding: 40px 40px;
+    min-height: 160px;
+  }
+
+  .banner-title {
+    font-size: 1.8rem;
+  }
+
+  .banner-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 24px;
+    min-height: auto;
+    border-radius: 16px;
+  }
+
+  .left-content {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .cta-section {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    max-width: 200px;
+    padding: 14px 28px;
+  }
+
+  .banner-title {
+    font-size: 1.6rem;
+  }
+
+  .banner-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .banner-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  .no-wrap {
+    white-space: normal;
+  }
+
+  /* Adjust decorative elements for mobile */
+  .banner-1::before {
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .banner-1::after {
+    bottom: -20px;
+    left: -20px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .banner-2::before {
+    top: -25px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .banner-2::after {
+    bottom: -15px;
+    left: 40px;
+    width: 70px;
+    height: 70px;
+  }
+
+  .banner-3::before {
+    top: 15px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .banner-3::after {
+    bottom: 15px;
+    right: 80px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Mobile-specific background adjustments */
+  .banner-3 {
+    background: linear-gradient(
+      180deg,
+      white 0%,
+      white 60%,
+      #9013fe 60%,
+      #9013fe 100%
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    padding: 24px 16px;
+    gap: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .left-content {
+    gap: 12px;
+  }
+
+  .banner-title {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+  }
+
+  .banner-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .banner-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    border-radius: 16px;
+  }
+
+  .cta-button {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    max-width: 180px;
+  }
+
+  /* Further reduce decorative elements for small screens */
+  .banner-1::before,
+  .banner-1::after,
+  .banner-2::before,
+  .banner-2::after,
+  .banner-3::before,
+  .banner-3::after {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .banner {
+    padding: 20px 12px;
+  }
+
+  .banner-title {
+    font-size: 1.2rem;
+  }
+
+  .banner-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .banner-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    max-width: 160px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .banner {
+    flex-direction: row;
+    text-align: left;
+    padding: 20px 24px;
+  }
+
+  .left-content {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .cta-section {
+    margin-left: 20px;
+    width: auto;
+  }
+
+  .cta-button {
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .banner-title {
+    font-size: 1.3rem;
+  }
+
+  .banner-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .banner-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+  }
+
+  .no-wrap {
+    white-space: nowrap;
+  }
+}

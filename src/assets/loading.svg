@@ -1,0 +1,9 @@
+<svg width="295" height="295" viewBox="0 0 295 295" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="147.64" cy="147.64" r="64.3901" fill="#9013FE" stroke="#9013FE" stroke-width="0.499148" />
+  <rect x="122.009" y="122.009" width="51.1439" height="51.1439" rx="6.50135" fill="white" stroke="#9013FE" stroke-width="0.866847">
+    <animateTransform attributeName="transform" type="rotate" from="0 147.64 147.64" to="360 147.64 147.64" dur="3s" repeatCount="indefinite" />
+  </rect>
+  <circle cx="147.5" cy="147.5" r="146" stroke="#D5A5FF" stroke-width="3">
+    <animate attributeName="r" from="100" to="146" dur="2s" repeatCount="indefinite" />
+  </circle>
+</svg>

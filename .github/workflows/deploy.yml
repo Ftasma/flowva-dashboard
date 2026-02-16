@@ -1,0 +1,59 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+      - development
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      # Install LFTP for safe, binary-mode FTP uploads
+      - name: Install LFTP
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      # Deploy using LFTP (no file corruption)
+      - name: Deploy to Hostinger with LFTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          TARGET_DIR: ${{ github.ref == 'refs/heads/main' && '/public_html/' || '/public_html/staging/' }}
+        run: |
+          echo "Deploying to $TARGET_DIR"
+
+          lftp -c "
+          set ftp:ssl-allow no
+          set ftp:passive-mode on
+          open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_HOST
+
+          # Remove old files from the target directory
+          mirror --reverse --delete --parallel=5 dist/ $TARGET_DIR
+
+          bye
+          "

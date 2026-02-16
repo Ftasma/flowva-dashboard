@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Roboto;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .toggle-button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+textarea {
+  background-color: #f5f5f5;
+  border: 1px solid #ede9fe;
+  padding: 11px 14px;
+  font-size: 16px;
+  line-height: 1.5;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  outline: none;
+  resize: none;
+}
+
+textarea:focus {
+  border-color: #9013fe;
+  box-shadow: 0 0 0 3px rgba(144, 19, 254, 0.1);
+}
+@layer utilities {
+  .category-list::-webkit-scrollbar {
+    width: 6px !important;
+  }
+
+  .category-list::-webkit-scrollbar-track {
+    background: #e9ecef;
+    border-radius: 10px !important;
+  }
+
+  .category-list::-webkit-scrollbar-thumb {
+    background: #a29bfe;
+    border-radius: 10px !important;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media only screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 5px !important;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden {
+    -ms-overflow-style: none; /* Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+    width: 0;
+    height: 0;
+  }
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(144, 19, 254, 0.1);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin: 2rem auto;
+}
+
+.form-loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(144, 19, 254, 0.1);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.compare-loader {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  box-sizing: content-box;
+  padding: 10px;
+}
+
+.square {
+  background-color: #9013fe;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+}
+
+.square-1 {
+  animation: load 2s infinite;
+}
+
+.square-2 {
+  animation: load 2s infinite;
+  animation-delay: 1s;
+}
+
+@keyframes load {
+  0% {
+    translate: 0px 0px;
+    scale: 1;
+    rotate: 0deg;
+  }
+
+  25% {
+    translate: 40px 0px;
+    scale: 0.5;
+    rotate: -90deg;
+  }
+
+  50% {
+    translate: 40px 40px;
+    scale: 1;
+    rotate: 180deg;
+  }
+
+  75% {
+    translate: 0px 40px;
+    scale: 0.5;
+    rotate: 90deg;
+  }
+}
+
+.ant-dropdown {
+  z-index: 0 !important;
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent !important;
+  border-radius: 9999px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+/* Modal content styling */
+.green-modal .ant-modal-content {
+  background-color: rgb(30, 159, 30) !important;
+  color: white;
+}
+
+/* Header (optional, if your modal has a title) */
+.green-modal .ant-modal-header {
+  background-color: rgb(30, 159, 30) !important;
+  border-bottom: none;
+}
+
+/* Footer */
+.green-modal .ant-modal-footer {
+  background-color: rgb(30, 159, 30) !important;
+  border-top: none;
+}
+
+/* Overlay opacity (backdrop dimming) */
+.green-modal .ant-modal-mask {
+  background-color: rgba(0, 0, 0, 1) !important; /* Adjust the opacity */
+}
+
+/* Custom close icon styling */
+.green-modal .ant-modal-close {
+  top: 10px !important;
+  right: 10px !important;
+}
+
+.custom-close-icon {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  margin-top: -20px;
+  margin: -5px;
+}
+
+.custom-dropdown {
+  min-width: 300px !important; /* Fixed width */
+  width: 100% !important;
+  max-width: 1000px !important;
+  z-index: 20 !important;
+}
+
+.custom-dropdown .ant-dropdown-menu {
+  max-width: 1000px !important;
+  width: 100% !important;
+}
+
+.ant-dropdown {
+  z-index: 500 !important;
+}
+
+.coreValueSwiper .swiper-slide {
+  overflow: visible !important;
+  width: 100% !important;
+  height: 370px !important;
+}
+
+.coreValueSwiper .swiper-pagination {
+  bottom: -5px !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  bottom: 10px !important;
+}
+
+@media (min-width: 768px) {
+  .coreValueSwiper .swiper-slide {
+    overflow: visible !important;
+    width: 400px !important;
+    height: 440px !important;
+  }
+}
+
+/* moves the pagination below the slides */
+.swiper-pagination {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.journey-step .swiper-pagination {
+  display: none !important;
+}
+
+/* style the bullets */
+.swiper-pagination-bullet {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+/* active bullet */
+.swiper-pagination-bullet-active {
+  background-color: black !important;
+  transform: scale(1.3);
+}
+
+.coreValueSwiper .swiper-slide {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+/* Focused (active) slide */
+.coreValueSwiper .swiper-slide-active {
+  opacity: 1;
+}
+
+:root {
+  --picwish-drops: drop-shadow(6px 9px 24px #0000001a)
+    drop-shadow(23px 37px 44px #00000017) drop-shadow(51px 84px 59px #0000000d)
+    drop-shadow(91px 149px 70px #00000003)
+    drop-shadow(143px 232px 76px #00000000);
+}
+
+.drop-shadow-track {
+  filter: var(--picwish-drops);
+}
+
+.custom-accordion .ant-collapse-item {
+  background: white !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+.custom-accordion .ant-collapse-header {
+  background: white !important;
+  padding: 12px 0 !important;
+}
+.custom-accordion .ant-collapse-content {
+  background: white !important;
+  padding: 0 0 12px 0 !important;
+}
+.custom-accordion .ant-collapse-content-box {
+  padding: 0 !important;
+}
+
+/* flip-card utilities (put in globals.css so it's always available) */
+
+.flip-card {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+  display: inline-block; /* prevents unexpected full-width behavior */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+/* back side is rotated so it shows after inner is rotated */
+.flip-card-back {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+/* hover/focus: normal desktop behavior */
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+/* class-based toggle (for clicks / mobile) */
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+.pause {
+  animation-play-state: paused !important;
+}
+
+
+
+.blog-modal .ant-modal-content {
+  border-radius: 24px;
+}
+.blog-modal .ant-modal-header {
+  border-radius: 24px 24px 0 0;
+}
+.blog-modal .ant-modal-mask {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
