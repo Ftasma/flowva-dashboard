@@ -39,7 +39,7 @@ export default function AdminSignin() {
         return;
       }
 
-      const { user } = data;
+      // const { user } = data;
 
       // Role check removed as per requirement: any authenticated user can sign in.
 
