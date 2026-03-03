@@ -58,6 +58,7 @@ import {
   faBars,
   faCommentAlt,
   faBook,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -150,5 +151,6 @@ export const Icons = {
   Play: faPlay as IconDefinition,
   Pause: faPause as IconDefinition,
   Chat: faCommentAlt as IconDefinition,
-  Blog : faBook as IconDefinition
+  Blog: faBook as IconDefinition,
+  Close: faTimes as IconDefinition
 };

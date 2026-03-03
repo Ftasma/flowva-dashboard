@@ -6,6 +6,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { adminBroadcast } from "../../../../services/admin/userService";
 import { toast } from "react-toastify";
+import supabase from "../../../../lib/supabase";
 
 interface BroadcastModalProps {
   openModal: boolean;
@@ -20,12 +21,19 @@ export default function BroadcastModal({
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     if (openModal) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      setSubject("");
+      setMessage("");
+      setSelectedFile(null);
+      setPreviewUrl(null);
     }
 
     return () => {
@@ -76,6 +84,21 @@ export default function BroadcastModal({
     }
   }, [category]);
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && file.type.startsWith("image/")) {
+      setSelectedFile(file);
+      setPreviewUrl(URL.createObjectURL(file));
+    } else {
+      toast.error("Please select a valid image file");
+    }
+  };
+
+  const clearImage = () => {
+    setSelectedFile(null);
+    setPreviewUrl(null);
+  };
+
   const handleSend = async () => {
     if (!subject.trim() || !message.trim()) {
       toast.error("Please fill in both subject and message.");
@@ -85,12 +108,51 @@ export default function BroadcastModal({
     try {
       setLoading(true);
 
-      const result = await adminBroadcast(subject, message, category);
+      let finalMessage = message;
+
+      if (selectedFile) {
+        setIsUploading(true);
+        try {
+          const fileExt = selectedFile.name.split(".").pop();
+          const fileName = `${Date.now()}.${fileExt}`;
+          const filePath = `headers/${fileName}`;
+
+          const { error: uploadError } = await supabase.storage
+            .from("email_images")
+            .upload(filePath, selectedFile);
+
+          if (uploadError) {
+            toast.error("Failed to upload image. Please ensure the bucket 'email_images' exists and is public.");
+            setIsUploading(false);
+            setLoading(false);
+            return;
+          }
+
+          const { data: publicUrlData } = supabase.storage
+            .from("email_images")
+            .getPublicUrl(filePath);
+
+          const imageUrl = publicUrlData.publicUrl;
+
+          finalMessage = `<div style="text-align: center; margin-bottom: 20px;"><img src="${imageUrl}" alt="Email Header Image" style="max-width: 100%; border-radius: 8px;" /></div>` + finalMessage;
+        } catch (error) {
+          console.error("Upload Error:", error);
+          toast.error("An error occurred uploading the image.");
+          setIsUploading(false);
+          setLoading(false);
+          return;
+        }
+        setIsUploading(false);
+      }
+
+      const result = await adminBroadcast(subject, finalMessage, category);
 
       if (result?.success) {
         toast.success(result.message || "Message sent successfully ✅");
         setSubject("");
         setMessage("");
+        setSelectedFile(null);
+        setPreviewUrl(null);
         setModalOpen(false);
       } else {
         toast.error(result?.message || "Failed to send message ❌");
@@ -135,6 +197,32 @@ export default function BroadcastModal({
               { value: "not_onboarded", label: "Not Onboarded users" },
             ]}
           />
+        </div>
+
+        {/* Image Upload */}
+        <div>
+          <label className="block text-sm font-medium mb-2 text-[#111827]">
+            Header Image (Optional)
+          </label>
+          {previewUrl ? (
+            <div className="relative w-full max-w-[200px]">
+              <img src={previewUrl} alt="Preview" className="w-full rounded-md border" />
+              <button
+                type="button"
+                onClick={clearImage}
+                className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 shadow"
+              >
+                <FontAwesomeIcon icon={Icons.Close} />
+              </button>
+            </div>
+          ) : (
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
+            />
+          )}
         </div>
 
         {/* Subject */}
@@ -182,17 +270,18 @@ export default function BroadcastModal({
         <div className="flex justify-end gap-2 mt-2">
           <button
             onClick={() => setModalOpen(false)}
-            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-100"
+            disabled={loading || isUploading}
+            className="px-4 py-2 text-sm font-medium rounded-md border border-gray-300 hover:bg-gray-100 disabled:opacity-50"
           >
             Cancel
           </button>
           <button
             onClick={handleSend}
-            disabled={!subject.trim()}
-            className="px-4 py-2 text-sm font-medium rounded-md text-white cursor-pointer"
+            disabled={!subject.trim() || loading || isUploading}
+            className="px-4 py-2 text-sm font-medium rounded-md text-white cursor-pointer disabled:opacity-50"
             style={{ backgroundColor: "#9013fe" }}
           >
-            {loading ? "Sending..." : "Send Email"}
+            {loading || isUploading ? "Sending..." : "Send Email"}
           </button>
         </div>
       </div>
