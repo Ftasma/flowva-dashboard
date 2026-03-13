@@ -149,6 +149,43 @@ export function invitationEmailHtml(params: EmailTemplateParams): string {
 }
 
 /**
+ * Append a premium "Sign in here" button to an HTML email body
+ * @param html - The original HTML body
+ * @returns The HTML with the sign-in button appended
+ */
+export function appendSignInButton(html: string): string {
+  const signInUrl = "https://www.joinbravoo.com/download";
+  
+  const buttonHtml = `
+    <div style="margin-top: 30px; text-align: center;">
+      <a href="${signInUrl}" 
+         style="background-color: #9013fe; color: #ffffff; padding: 10px 24px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: bold; font-family: sans-serif; box-shadow: 0 4px 6px rgba(144, 19, 254, 0.2); transition: all 0.2s ease;">
+        Sign in here
+      </a>
+    </div>
+  `;
+
+  // Try to append before the footer or </body> tag, or just at the end
+  if (html.includes('<div class="footer">')) {
+    return html.replace('<div class="footer">', buttonHtml + '<div class="footer">');
+  } else if (html.includes('</body>')) {
+    return html.replace('</body>', buttonHtml + '</body>');
+  } else {
+    return html + buttonHtml;
+  }
+}
+
+/**
+ * Append a plain-text "Sign in here" link to a text email body
+ * @param text - The original plain-text body
+ * @returns The text with the sign-in link appended
+ */
+export function appendSignInButtonText(text: string): string {
+  const signInUrl = "https://www.joinbravoo.com/download";
+  return text + `\n\nSign in here: ${signInUrl}\n`;
+}
+
+/**
  * Create a complete email with the current user as the sender
  * For use within React components
  */

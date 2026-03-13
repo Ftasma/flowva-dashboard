@@ -6,6 +6,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import supabase from "../../../../lib/supabase";
 import { toast } from "react-toastify";
+import { appendSignInButton } from "../../../../utils/emailTemplates";
 
 interface MessageModalProps {
   openModal: boolean;
@@ -100,7 +101,9 @@ export default function MessageModal({
       setIsUploading(false);
     }
 
-    onSend?.({ recipients: selectedEmails, subject, message: finalMessage });
+    const finalEmailMessage = appendSignInButton(finalMessage);
+
+    onSend?.({ recipients: selectedEmails, subject, message: finalEmailMessage });
   };
 
   const title =

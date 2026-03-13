@@ -6,6 +6,8 @@ import {
   invitationEmailText,
   getFirstName,
   useSenderName,
+  appendSignInButton,
+  appendSignInButtonText,
 } from "../../../utils/emailTemplates";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
@@ -83,21 +85,21 @@ export default function EmailShareModal({
     
 
       // Create email content
-      const htmlBody = invitationEmailHtml({
+      const htmlBody = appendSignInButton(invitationEmailHtml({
         senderName: effectiveSenderName,
         itemType,
         sharedUrl: shareUrl,
         customMessage: values.message || "",
         recipientFirstName,
-      });
+      }));
 
-      const textBody = invitationEmailText({
+      const textBody = appendSignInButtonText(invitationEmailText({
         senderName: effectiveSenderName,
         itemType,
         sharedUrl: shareUrl,
         customMessage: values.message || "",
         recipientFirstName,
-      });
+      }));
 
       // Send the email
       await sendShareEmail(email, subject, htmlBody, textBody);

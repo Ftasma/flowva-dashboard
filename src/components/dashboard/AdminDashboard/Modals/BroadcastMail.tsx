@@ -7,6 +7,7 @@ import "react-quill/dist/quill.snow.css";
 import { adminBroadcast } from "../../../../services/admin/userService";
 import { toast } from "react-toastify";
 import supabase from "../../../../lib/supabase";
+import { appendSignInButton } from "../../../../utils/emailTemplates";
 
 interface BroadcastModalProps {
   openModal: boolean;
@@ -145,7 +146,10 @@ export default function BroadcastModal({
         setIsUploading(false);
       }
 
-      const result = await adminBroadcast(subject, finalMessage, category);
+
+      const finalEmailMessage = appendSignInButton(finalMessage);
+
+      const result = await adminBroadcast(subject, finalEmailMessage, category);
 
       if (result?.success) {
         toast.success(result.message || "Message sent successfully ✅");
