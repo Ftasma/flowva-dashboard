@@ -154,8 +154,8 @@ export function invitationEmailHtml(params: EmailTemplateParams): string {
  * @returns The HTML with the sign-in button appended
  */
 export function appendSignInButton(html: string): string {
-  const signInUrl = "https://www.joinbravoo.com/download";
-  
+  const signInUrl = "https://www.joinbravoo.com";
+
   const buttonHtml = `
     <div style="margin-top: 30px; text-align: center;">
       <a href="${signInUrl}" 
@@ -181,7 +181,7 @@ export function appendSignInButton(html: string): string {
  * @returns The text with the sign-in link appended
  */
 export function appendSignInButtonText(text: string): string {
-  const signInUrl = "https://www.joinbravoo.com/download";
+  const signInUrl = "https://www.joinbravoo.com";
   return text + `\n\nSign in here: ${signInUrl}\n`;
 }
 
@@ -281,19 +281,16 @@ export function generateToolRewardEmailHTML({
       (tool) => `
         <tr>
           <td style="padding: 12px; border: 1px solid #e5e7eb; border-radius: 8px;">
-            <h3 style="margin: 0; font-size: 16px; color: #9013fe; font-family: Verdana;">${
-              tool.title
-            }</h3>
+            <h3 style="margin: 0; font-size: 16px; color: #9013fe; font-family: Verdana;">${tool.title
+        }</h3>
             <p style="margin: 4px 0; font-family: Verdana;">${tool.header}</p>
-            ${
-              tool.coupon
-                ? `<p style="margin: 4px 0; font-weight: bold; font-family: Verdana;">${tool.coupon}</p>`
-                : ""
-            }
+            ${tool.coupon
+          ? `<p style="margin: 4px 0; font-weight: bold; font-family: Verdana;">${tool.coupon}</p>`
+          : ""
+        }
             <p style="margin: 4px 0; font-family: Verdana;">
-              <a href="${tool.link}" target="_blank" style="color: #1a0dab;">${
-        tool.link
-      }</a>
+              <a href="${tool.link}" target="_blank" style="color: #1a0dab;">${tool.link
+        }</a>
             </p>
           </td>
         </tr>
@@ -411,9 +408,8 @@ export function generateToolRewardEmailText({
   tools: ToolReward[];
 }): string {
   const lines = tools.map((tool) => {
-    return `🔧 ${tool.title}\n${tool.header}\n${
-      tool.coupon ? tool.coupon + "\n" : ""
-    }${tool.link}\n`;
+    return `🔧 ${tool.title}\n${tool.header}\n${tool.coupon ? tool.coupon + "\n" : ""
+      }${tool.link}\n`;
   });
 
   return `Hi ${name},
@@ -490,11 +486,10 @@ export function generateFlowvaGiftEmailHTML({
 
       <p style="color: #000000;">📌 Tip: If you're using Gmail, the reward email might appear in your <strong style="color:#000000;">Promotions</strong> tab. Please check there as well!</p>
 
-      ${
-        customMessage
-          ? `<p style="margin-top: 20px; color:#000000;"><strong style="color:#000000;">Note:</strong> ${customMessage}</p>`
-          : ""
-      }
+      ${customMessage
+      ? `<p style="margin-top: 20px; color:#000000;"><strong style="color:#000000;">Note:</strong> ${customMessage}</p>`
+      : ""
+    }
               <!-- Social Share Section -->
 <table width="100%" style="margin-top: 30px; background-color: #f9f9f9; padding: 16px; border-radius: 8px;">
   <tr>
